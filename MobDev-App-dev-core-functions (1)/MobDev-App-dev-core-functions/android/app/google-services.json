@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "196028770043",
+    "firebase_url": "https://secu-mobile-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "secu-mobile",
+    "storage_bucket": "secu-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196028770043:android:f52b4ace4b570268d9b25e",
+        "android_client_info": {
+          "package_name": "com.secuaudio.app.secured_audio_player"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw4mOWcQcmiQ1lzj4NlR8aYkcD8eNriZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196028770043:android:ccb4e964049ceac7d9b25e",
+        "android_client_info": {
+          "package_name": "com.secuaudio.app.secured_audio_player"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw4mOWcQcmiQ1lzj4NlR8aYkcD8eNriZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
