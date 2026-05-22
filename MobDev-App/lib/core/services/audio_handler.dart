@@ -18,18 +18,19 @@ class MyAudioHandler extends BaseAudioHandler with SeekHandler {
     });
 
     _player.loopModeStream.listen((loopMode) {
-      final repeatMode = const {
-        LoopMode.off: AudioServiceRepeatMode.none,
-        LoopMode.one: AudioServiceRepeatMode.one,
-        LoopMode.all: AudioServiceRepeatMode.all,
-      }[loopMode] ?? AudioServiceRepeatMode.none;
-      
+      final repeatMode =
+          const {
+            LoopMode.off: AudioServiceRepeatMode.none,
+            LoopMode.one: AudioServiceRepeatMode.one,
+            LoopMode.all: AudioServiceRepeatMode.all,
+          }[loopMode] ??
+          AudioServiceRepeatMode.none;
+
       if (!playbackState.isClosed) {
         playbackState.add(playbackState.value.copyWith(repeatMode: repeatMode));
       }
     });
 
-    // Listen to duration changes to update MediaItem
     _player.durationStream.listen((duration) {
       final item = mediaItem.value;
       if (item != null && duration != null) {
@@ -37,7 +38,6 @@ class MyAudioHandler extends BaseAudioHandler with SeekHandler {
       }
     });
 
-    // Handle end of track (looping or next)
     _player.processingStateStream.listen((state) {
       if (state == ProcessingState.completed) {
         if (_player.loopMode == LoopMode.off) {
@@ -46,15 +46,15 @@ class MyAudioHandler extends BaseAudioHandler with SeekHandler {
       }
     });
 
-    // Recording listening time every 30 seconds (0.5 mins)
     Stream.periodic(const Duration(seconds: 30)).listen((_) {
       if (_player.playing) {
-        _storage.addMinutesForToday(1); // Local storage still uses integers, adding 1 min every 30s is too much, so I'll keep it as 1 min every 60s for local if needed, but for Firestore we want precision.
+        _storage.addMinutesForToday(
+          1,
+        ); // Local storage still uses integers, adding 1 min every 30s is too much, so I'll keep it as 1 min every 60s for local if needed, but for Firestore we want precision.
         // Actually, let's make it consistent.
       }
     });
-    
-    // Better logic: record every 30s but increment by 0.5
+
     Stream.periodic(const Duration(seconds: 30)).listen((_) {
       if (_player.playing) {
         final uid = FirebaseAuth.instance.currentUser?.uid;

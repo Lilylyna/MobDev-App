@@ -45,10 +45,11 @@ class ApiService {
     String? reciterServer,
   }) async {
     final paddedId = id.padLeft(3, '0');
-    
-    // Si on a un serveur spécifique pour le récitateur
+
     if (reciterServer != null && reciterServer.isNotEmpty) {
-      final String baseUrl = reciterServer.endsWith('/') ? reciterServer : '$reciterServer/';
+      final String baseUrl = reciterServer.endsWith('/')
+          ? reciterServer
+          : '$reciterServer/';
       return AudioTrack(
         id: id,
         title: categoryName,
@@ -59,7 +60,6 @@ class ApiService {
       );
     }
 
-    // Fallback URL construct
     final String fallbackReciter = reciterShortName ?? 'minsh';
     return AudioTrack(
       id: id,
@@ -80,9 +80,11 @@ class ApiService {
     final name = surah['name_en'] ?? surah['title'] ?? 'Unknown';
     final nameAr = surah['name_ar'] ?? surah['name'];
     final paddedId = id.padLeft(3, '0');
-    
+
     if (reciterServer != null && reciterServer.isNotEmpty) {
-      final String baseUrl = reciterServer.endsWith('/') ? reciterServer : '$reciterServer/';
+      final String baseUrl = reciterServer.endsWith('/')
+          ? reciterServer
+          : '$reciterServer/';
       return AudioTrack(
         id: id,
         title: name,

@@ -143,7 +143,9 @@ class StatisticsPage extends ConsumerWidget {
                     children: [
                       Text(
                         '${totalMinutes.toStringAsFixed(1)} / ${targetMinutes.toInt()} mins',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 12),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodySmall?.copyWith(fontSize: 12),
                       ),
                       Text(
                         '${(progress * 100).toStringAsFixed(1)}% achieved',
@@ -222,7 +224,10 @@ class StatisticsPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildListeningChart(BuildContext context, AsyncValue<QuerySnapshot> stats) {
+  Widget _buildListeningChart(
+    BuildContext context,
+    AsyncValue<QuerySnapshot> stats,
+  ) {
     return Container(
       height: 250,
       padding: const EdgeInsets.only(top: 20, right: 20, left: 10, bottom: 10),
@@ -296,7 +301,9 @@ class StatisticsPage extends ConsumerWidget {
                     reservedSize: 30,
                     getTitlesWidget: (value, meta) => Text(
                       '${value.toInt()}m',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 8),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodySmall?.copyWith(fontSize: 8),
                     ),
                   ),
                 ),
@@ -311,7 +318,9 @@ class StatisticsPage extends ConsumerWidget {
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Text(
                             DateFormat('dd/M').format(date),
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 8),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodySmall?.copyWith(fontSize: 8),
                           ),
                         );
                       }
@@ -392,7 +401,9 @@ class StatisticsPage extends ConsumerWidget {
                   title: Text(track.title),
                   subtitle: Text(
                     track.category,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 12),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall?.copyWith(fontSize: 12),
                   ),
                   trailing: Icon(
                     Icons.play_circle_outline,
